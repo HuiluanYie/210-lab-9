@@ -18,7 +18,7 @@ int main() {
     
     // file input
     ifstream fin; 
-    fin.open("data.txt");
+    fin.open("temperatures.txt");
     if (fin.good( )) {
         for (int i = 0; i < DAYS; i++)
         {
@@ -28,9 +28,21 @@ int main() {
 
         // use <array> member functions
         // <array> objects can report their own size, unlike C-style arrays
-        cout << "1.  Size: " << temperatures.size() << endl;
+        cout << "1.  Days of temperature recorded: " << temperatures.size() << endl;
 
-        
+        // range loop to access elements
+        cout << "2.  Temperatures each day: \n";
+        print_temp(temperatures);
+
+        // accessing individual elements
+        cout << "3.  Element 2: " << temperatures.at(2) << endl;
+        cout << "4.  Element 2: " << temperatures[2] << endl;
+        cout << "5.  Front: " << temperatures.front() << endl;
+        cout << "6.  Back: " << temperatures.back() << endl;
+        cout << "7.  Empty? " << (temperatures.empty() == 0? "False" : "True") << endl;
+        cout << "8.  Address? " << temperatures.data() << endl;
+
+
     }
     else
         cout << "File not found.\n";
@@ -41,5 +53,8 @@ int main() {
 //Function definition
 void print_temp(array<double, DAYS> temps)
 {
-    for (double t : temps) cout << t << " "; cout << endl;
+    // print_temp() prints out the array of temperatures
+    // arguments: an array of temperatures
+    // returns: none
+    for (double t : temps) cout << "\t" << t << " F\n"; 
 }

@@ -5,9 +5,10 @@
 #include <numeric>    // for accumulate()
 #include <array>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
-const int DAYS = 30;
+const int DAYS = 30, W = 3;
 
 //Function prototype
 void print_temp(array<double, DAYS>);
@@ -56,5 +57,6 @@ void print_temp(array<double, DAYS> temps)
     // print_temp() prints out the array of temperatures
     // arguments: an array of temperatures
     // returns: none
-    for (double t : temps) cout << "\t" << t << " F\n"; 
+    for (int i = 0; i < temps.size(); i++) 
+        cout << setw(W) << i << ":  " << temps[i] << endl; 
 }

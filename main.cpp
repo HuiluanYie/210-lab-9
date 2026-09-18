@@ -70,7 +70,7 @@ int main() {
         // find max & min & sum
         cout << "12. The maximun temperature is: " << * max_element(temperatures.begin(), temperatures.end()) << endl;
         cout << "13. The minimun temperature is: " << * min_element(temperatures.begin(), temperatures.end()) << endl;
-        cout << "14. The average temperature is: " << accumulate(temperatures.begin(), temperatures.end(), 0) / temperatures.size() << endl;
+        cout << "14. The average temperature is: " << accumulate(temperatures.begin(), temperatures.end(), 0.0) / temperatures.size() << endl;
 
         // fill an array with one value
         array < double, DAYS > same;
@@ -95,8 +95,10 @@ int main() {
     // file input
     fin.open("temperatures.txt");
     if (fin.good()) {
+        double temp;
         for (int i = 0; i < DAYS; i++) {
-            fin >> temperatures2[i];
+            fin >> temp;
+            temperatures2.push_back(temp);
         }
         fin.close(); // close the file  
 
@@ -109,8 +111,8 @@ int main() {
         print_vec(temperatures2);
 
         // accessing individual elements
-        cout << "3.  2nd temperature: " << temperatures2.at(2) << endl;
-        cout << "4.  3rd temperature: " << temperatures2[3] << endl;
+        cout << "3.  2nd temperature: " << temperatures2.at(1) << endl;
+        cout << "4.  3rd temperature: " << temperatures2[2] << endl;
         cout << "5.  1st temperature: " << temperatures2.front() << endl;
         cout << "6.  last temperature: " << temperatures2.back() << endl;
         cout << "7.  Empty? " << (temperatures2.empty() == 0 ? "False" : "True") << endl;
@@ -143,9 +145,8 @@ int main() {
         cout << "14. The average temperature is: " << accumulate(temperatures2.begin(), temperatures2.end(), 0) / temperatures2.size() << endl;
 
         // fill an array with one value
-        array < double, DAYS > same;
-        cout << "15. An array of the same number: \n";
-        same.fill(70);
+        vector < double > same (DAYS, 70);
+        cout << "15. A vector of the same number: \n";
         print_vec(same);
 
         // swap same and temperatures2

@@ -36,13 +36,36 @@ int main() {
         print_temp(temperatures);
 
         // accessing individual elements
-        cout << "3.  Element 2: " << temperatures.at(2) << endl;
-        cout << "4.  Element 2: " << temperatures[2] << endl;
-        cout << "5.  Front: " << temperatures.front() << endl;
-        cout << "6.  Back: " << temperatures.back() << endl;
+        cout << "3.  2nd temperature: " << temperatures.at(2) << endl;
+        cout << "4.  3rd temperature: " << temperatures[3] << endl;
+        cout << "5.  1st temperature: " << temperatures.front() << endl;
+        cout << "6.  last temperature: " << temperatures.back() << endl;
         cout << "7.  Empty? " << (temperatures.empty() == 0? "False" : "True") << endl;
         cout << "8.  Address? " << temperatures.data() << endl;
 
+        // find an element
+        // find an element
+        double target = 83;   // search target
+        array<double, temperatures.size()>::iterator it;  // declare iterator to point to the found element
+        it = find(temperatures.begin(), temperatures.end(), target);
+
+        cout << "11. looking for a day which temperature is " << target << "?";
+        if (it != temperatures.end())
+            cout << " Found, day " << it - temperatures.begin() << "'s temperature" << target << endl;
+        else
+            cout << " was not found.\n";
+        cout << "    Value: " << *it << endl;
+
+        // use iterators to sort
+        sort(temperatures.begin(), temperatures.end());
+        cout << "9.  Sorted: \n";
+        print_temp(temperatures);
+
+        sort(temperatures.rbegin(), temperatures.rend());
+        cout << "10. Reverse sorted: \n";
+        print_temp(temperatures);
+
+        
 
     }
     else
@@ -58,5 +81,5 @@ void print_temp(array<double, DAYS> temps)
     // arguments: an array of temperatures
     // returns: none
     for (int i = 0; i < temps.size(); i++) 
-        cout << setw(W) << i << ":  " << temps[i] << endl; 
+        cout << setw(W) << i + 1 << ":  " << temps[i] << endl; 
 }

@@ -49,22 +49,27 @@ int main() {
         array<double, temperatures.size()>::iterator it;  // declare iterator to point to the found element
         it = find(temperatures.begin(), temperatures.end(), target);
 
-        cout << "11. looking for a day which temperature is " << target << "?";
+        cout << "9. looking for a day which temperature is " << target << endl;
         if (it != temperatures.end())
-            cout << " Found, day " << it - temperatures.begin() << "'s temperature" << target << endl;
+            cout << "\tFound, day#" << it - temperatures.begin() << "'s temperature is " << target << endl;
         else
-            cout << " was not found.\n";
-        cout << "    Value: " << *it << endl;
+            cout << " Not found.\n";
 
         // use iterators to sort
         sort(temperatures.begin(), temperatures.end());
-        cout << "9.  Sorted: \n";
+        cout << "10.  Sorted: \n";
         print_temp(temperatures);
 
         sort(temperatures.rbegin(), temperatures.rend());
-        cout << "10. Reverse sorted: \n";
+        cout << "11. Reverse sorted: \n";
         print_temp(temperatures);
 
+        // find max & min & sum
+        cout << "12. The maximun temperature is: " << *max_element(temperatures.begin(), temperatures.end()) << endl;
+        cout << "13. The minimun temperature is: " << *min_element(temperatures.begin(), temperatures.end()) << endl;
+        cout << "14. The average temperature is: " << accumulate(temperatures.begin(), temperatures.end(), 0) / temperatures.size() << endl;
+
+        // fill an array with one value
         
 
     }
